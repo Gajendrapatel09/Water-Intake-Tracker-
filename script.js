@@ -13,7 +13,7 @@ minus.addEventListener("click", () => updateGoal("-"));
 plus.addEventListener("click", () => updateGoal("+"));
 
 function updateGoal(sign) {
-  //take plus or minus string sign
+  //taking plus or minus string sign
   if (sign == "+" && goal < 3.75) {
     goal += 0.25;
     addCup();
