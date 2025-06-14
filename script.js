@@ -147,7 +147,7 @@ function showHydrationHistory(logs) {
       const total = entries.reduce((sum, log) => sum + log.amount, 0);
       const goalMsg =
         total >= DAILY_GOAL
-          ? `<span style="color:green;">✅ Goal Achieved!</span>`
+          ? `<span style="color:green;">✅ Goal Achieved! 🎉</span>`
           : `<span style="color:orange;">🔄 ${total}/${DAILY_GOAL} ml</span>`;
 
       let html = `<h3>${date} — ${goalMsg}</h3><ul>`;
@@ -169,6 +169,17 @@ function groupLogsByDate(logs) {
   });
   return history;
 }
+
+let lastDate = new Date().toISOString().slice(0, 10);
+
+setInterval(() => {
+  const currentDate = new Date().toISOString().slice(0, 10);
+  if (currentDate !== lastDate) {
+    lastDate = currentDate;
+    // Reload logs and refresh view
+    loadLogs(); // call your existing function
+  }
+}, 60000); // check every 60 seconds
 
 // fetch("hydration.json")
 //   .then((response) => response.json())

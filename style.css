@@ -108,4 +108,9 @@ h3 {
   border: 3px solid #144fc6 ;
   color: #144fc6;
   font-size: x-large;
+  margin-bottom: 16px;
+}
+.waterstatus{
+    font-weight: bold;
+    font-size: large;
 }
