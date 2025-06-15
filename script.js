@@ -181,40 +181,18 @@ setInterval(() => {
   }
 }, 60000); // check every 60 seconds
 
-// fetch("hydration.json")
-//   .then((response) => response.json())
-//   .then((data) => showHydrationHistory(data));
+fetch("hydration.json")
+  .then((response) => response.json())
+  .then((data) => showHydrationHistory(data));
 
-// function groupLogsByDate(logs) {
-//   const history = {};
+function groupLogsByDate(logs) {
+  const history = {};
 
-//   logs.forEach((log) => {
-//     const date = log.timestamp.slice(0, 10); // 'YYYY-MM-DD'
-//     if (!history[date]) history[date] = [];
-//     history[date].push(log);
-//   });
+  logs.forEach((log) => {
+    const date = log.timestamp.slice(0, 10); // 'YYYY-MM-DD'
+    if (!history[date]) history[date] = [];
+    history[date].push(log);
+  });
 
-//   return history;
-// }
-
-// function showHydrationHistory(logs) {
-//   const history = groupLogsByDate(logs);
-//   const container = document.getElementById("history-container");
-//   container.innerHTML = "";
-
-//   Object.keys(history)
-//     .sort()
-//     .reverse()
-//     .forEach((date) => {
-//       const entries = history[date];
-//       const total = entries.reduce((sum, log) => sum + log.amount, 0);
-
-//       let html = `<h3>📅 ${date} — Total: ${total} ml</h3><ul>`;
-//       entries.forEach((entry) => {
-//         const time = new Date(entry.timestamp).toLocaleTimeString();
-//         html += `<li>${time} — ${entry.amount} ml</li>`;
-//       });
-//       html += `</ul>`;
-//       container.innerHTML += html;
-//     });
-// }
+  return history;
+}
